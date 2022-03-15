@@ -1,9 +1,7 @@
 #!/bin/bash
 rm -fr filenames links content-creators.txt
 cd src
-rm -fr filenames links content-creators.txt
 python3 ama_compiler.py
-mv content-creators.txt ..
 # Create ordered list of comments to loop over during typesetting
 mkdir "filenames"
 for i in ./*/; do ls --sort=time -r "$i" > "filenames/${i:2: -1}.txt"; done
