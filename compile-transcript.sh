@@ -12,11 +12,9 @@ cd ..
 # Create list of directories to loop over during typesetting
 if [ ! -e content-creators.txt ]; then (for i in {"Daron Nefcy","Adam McArthur","Dominic Bisignano","Aaron Hammersley"}; do echo ${i/\//} >> content-creators.txt; done); fi
 # Convert input files into TeX-friendly format
-python3 parser.py
+if [ ! -e "qa/" ]; then python3 parser.py; fi;
 # Create emoticon files for use during typesetting
-cd emoticons
-for i in ./*; do inkscape -D -z --file=${i:2:-4}.svg --export-pdf=${i:2:-4}.pdf --export-latex; done
-cd ..
+if [ ! -e "svg-inkscape" ]; then (cd emoticons; for i in ./*; do inkscape -D -z --file=${i:2:-4}.svg --export-pdf=${i:2:-4}.pdf --export-latex; done; cd ..); fi;
 # Commence typesetting
-pdflatex --shell-escape ama-transcript
+if [ ! -e ama-transcript.pdf ]; then pdflatex --shell-escape ama-transcript; fi
 pdflatex ama-transcript
