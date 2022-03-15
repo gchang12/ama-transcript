@@ -1,6 +1,11 @@
 #!/bin/bash
 cd src
 python3 ama_compiler.py
+# Sort directories into the order as it appears on the source website
+touch "Daron Nefcy"
+touch "Adam McArthur"
+touch "Dominic Bisignano"
+touch "Aaron Hammersley"
 # Create list of directories to loop over during typesetting
 OIFS=$IFS
 IFS=$'\n'
