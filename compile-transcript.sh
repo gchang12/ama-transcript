@@ -9,7 +9,6 @@ rm filenames/filenames.txt
 mv filenames ..
 # This user's comment had to be manually edited
 if [ -e ../notes/Inazuma-sensei.txt ]; then mv ../notes/Inazuma-sensei.txt "./Daron Nefcy/Inazuma-sensei.txt"; fi;
-chmod -w "./Daron Nefcy/Inazuma-sensei.txt"
 # Getting hyperlinks for each user
 python3 link_fetcher.py
 mv links ..
