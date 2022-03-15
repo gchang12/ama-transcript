@@ -7,15 +7,15 @@ python3 ama_compiler.py
 cp ../notes/Inazuma-sensei.txt "./Daron Nefcy/Inazuma-sensei.txt"
 # Create list of directories to loop over during typesetting
 for i in {"Daron Nefcy","Adam McArthur","Dominic Bisignano","Aaron Hammersley"}; do echo ${i/\//} >> content-creators.txt; done
-mv -f content-creators.txt ..
+mv content-creators.txt ..
 # Create ordered list of comments to loop over during typesetting
 if [ ! -e "filenames" ]; then mkdir "filenames"; fi;
 for i in ./*/; do ls --sort=time -r "$i" > "filenames/${i:2: -1}.txt"; done
 rm filenames/filenames.txt
-mv -f filenames ..
+mv filenames ..
 # Getting hyperlinks for each user
 python3 link_fetcher.py
-mv -f links ..
+mv links ..
 cd ..
 # Convert input files into TeX-friendly format
 python3 parser.py
