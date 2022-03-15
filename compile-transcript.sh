@@ -1,9 +1,10 @@
 #!/bin/bash
 cd src
+#../_private.sh
 if [ -e qa-contents.zip ]; then (unzip -d . qa-contents.zip; rm qa-contents.zip); fi
 python3 ama_compiler.py
 # Create ordered list of comments to loop over during typesetting
-if [ ! -e "../filenames" ]; then (mkdir "filenames"; for i in ./*/; do (ls --sort=time -r "$i" > "filenames/${i:2: -1}.txt"); done; rm filenames/filenames.txt; mv "filenames" ..); fi
+if [ ! -e "../filenames" ]; then (mkdir "filenames"; for i in ./[AD]*/; do (ls --sort=time -r "$i" > "filenames/${i:2: -1}.txt"); done; mv "filenames" ..); fi
 # This user's comment had to be manually edited
 cp ../notes/Inazuma-sensei.txt "./Daron Nefcy/Inazuma-sensei.txt"
 # Getting hyperlinks for each user
