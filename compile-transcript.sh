@@ -1,11 +1,12 @@
 #!/bin/bash
+rm -fr filenames links content-creators.txt
 cd src
 rm -fr filenames links content-creators.txt
 python3 ama_compiler.py
-# User must manually update this user's src file
-if [ -e ../notes/Inazuma-sensei.txt ]; then read -p "Please replace './src/Daron Nefcy/Inazuma-sensei.txt' with the version in ./notes, then delete the latter. "; fi
+# This user's comment had to be manually edited
+cp ../notes/Inazuma-sensei.txt "./Daron Nefcy/Inazuma-sensei.txt"
 # Sort directories into the order as it appears on the source website
-touch "Daron Nefcy"
+#touch "Daron Nefcy"
 touch "Adam McArthur"
 touch "Dominic Bisignano"
 touch "Aaron Hammersley"
