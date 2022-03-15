@@ -1,5 +1,6 @@
 #!/bin/bash
 cd src
+rm -fr filenames links content-creators.txt
 python3 ama_compiler.py
 # Sort directories into the order as it appears on the source website
 touch "Daron Nefcy"
@@ -10,18 +11,18 @@ touch "Aaron Hammersley"
 OIFS=$IFS
 IFS=$'\n'
 for i in $(ls -d --sort=time -r */); do echo ${i/\//} >> content-creators.txt; done
-if [ ! -e ../content-creators.txt ]; then mv content-creators.txt ..; fi;
+mv -f content-creators.txt ..
 IFS=$OIFS
 # Create ordered list of comments to loop over during typesetting
 if [ ! -e "filenames" ]; then mkdir "filenames"; fi;
 for i in ./*/; do ls --sort=time -r "$i" > "filenames/${i:2: -1}.txt"; done
 rm filenames/filenames.txt
-if [ ! -e ../filenames ]; then mv filenames ..; fi
+mv -f filenames ..
 # User must manually update this user's src file
 if [ -e ../notes/Inazuma-sensei.txt ]; then read -p "Please replace './src/Daron Nefcy/Inazuma-sensei.txt' with the version in ./notes, then delete the latter. "; fi
 # Getting hyperlinks for each user
 python3 link_fetcher.py
-if [ ! -e ../links ]; then mv links ..; fi
+mv -f links ..
 cd ..
 # Convert input files into TeX-friendly format
 python3 parser.py
