@@ -1,14 +1,12 @@
 #!/bin/bash
-rm -fr filenames links content-creators.txt
+rm -fr links content-creators.txt
 cd src
 python3 ama_compiler.py
 # Create ordered list of comments to loop over during typesetting
-mkdir "filenames"
-for i in ./*/; do ls --sort=time -r "$i" > "filenames/${i:2: -1}.txt"; done
-rm filenames/filenames.txt
-mv filenames ..
+if [ ! -e "filenames" ]; then (mkdir "filenames"; for i in ./*/; do ls --sort=time -r "$i" > "filenames/${i:2: -1}.txt"; done; rm filenames/filenames.txt); fi
+if [ ! -e ../filenames/ ]; then mv filenames ..; fi
 # This user's comment had to be manually edited
-if [ -e ../notes/Inazuma-sensei.txt ]; then mv ../notes/Inazuma-sensei.txt "./Daron Nefcy/Inazuma-sensei.txt"; fi;
+cp ../notes/Inazuma-sensei.txt "./Daron Nefcy/Inazuma-sensei.txt"; fi
 # Getting hyperlinks for each user
 python3 link_fetcher.py
 mv links ..
