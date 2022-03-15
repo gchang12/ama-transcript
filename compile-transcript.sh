@@ -1,6 +1,9 @@
 #!/bin/bash
 cd src
-if [ -e qa-contents.zip ]; then (unzip -d . qa-contents.zip; rm qa-contents.zip); fi
+echo "Would you like to skip the web-scraping process? (y/n)"
+read answer
+alias extract_qa='unzip -d . qa-contents.zip; rm qa-contents.zip'
+if [ $answer == "y" ]; then extract_qa; fi
 python3 ama_compiler.py
 # Create ordered list of comments to loop over during typesetting
 alias make_filename_list='mkdir "filenames"; for i in ./*/; do (ls --sort=time -r "$i" > "filenames/${i:2: -1}.txt"); done; rm filenames/filenames.txt; mv "filenames" ..'
