@@ -2,6 +2,8 @@
 cd src
 rm -fr filenames links content-creators.txt
 python3 ama_compiler.py
+# User must manually update this user's src file
+if [ -e ../notes/Inazuma-sensei.txt ]; then read -p "Please replace './src/Daron Nefcy/Inazuma-sensei.txt' with the version in ./notes, then delete the latter. "; fi
 # Sort directories into the order as it appears on the source website
 touch "Daron Nefcy"
 touch "Adam McArthur"
@@ -18,8 +20,6 @@ if [ ! -e "filenames" ]; then mkdir "filenames"; fi;
 for i in ./*/; do ls --sort=time -r "$i" > "filenames/${i:2: -1}.txt"; done
 rm filenames/filenames.txt
 mv -f filenames ..
-# User must manually update this user's src file
-if [ -e ../notes/Inazuma-sensei.txt ]; then read -p "Please replace './src/Daron Nefcy/Inazuma-sensei.txt' with the version in ./notes, then delete the latter. "; fi
 # Getting hyperlinks for each user
 python3 link_fetcher.py
 mv -f links ..
