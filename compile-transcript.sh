@@ -9,7 +9,7 @@ cp ../notes/Inazuma-sensei.txt "./Daron Nefcy/Inazuma-sensei.txt"
 for i in {"Daron Nefcy","Adam McArthur","Dominic Bisignano","Aaron Hammersley"}; do echo ${i/\//} >> content-creators.txt; done
 mv content-creators.txt ..
 # Create ordered list of comments to loop over during typesetting
-if [ ! -e "filenames" ]; then mkdir "filenames"; fi;
+then mkdir "filenames"
 for i in ./*/; do ls --sort=time -r "$i" > "filenames/${i:2: -1}.txt"; done
 rm filenames/filenames.txt
 mv filenames ..
