@@ -1,0 +1,26 @@
+\newread\ccRead
+\newread\fnameRead
+
+\newtoks\ccName
+\obeylines
+
+\openin\ccRead=content-creators.txt
+\catcode`\^^M=9
+\loop
+\read\ccRead to \vip
+\unless\ifeof\ccRead
+    \startSection\vip
+    \ccName={"filenames/\vip.txt"}
+    {%
+    \openin\fnameRead=\the\ccName
+    \loop
+    \read\fnameRead to \fname
+    \unless\ifeof\fnameRead
+        \expandafter\printTitle\fname\vip
+        \readQuestion\vip\fname
+        \readAnswer\vip\fname
+        \repeat
+    \closein\fnameRead%
+    }
+\repeat
+\closein\ccRead
