@@ -3,8 +3,6 @@ rm -fr filenames links content-creators.txt
 cd src
 rm -fr filenames links content-creators.txt
 python3 ama_compiler.py
-# Create list of directories to loop over during typesetting
-for i in {"Daron Nefcy","Adam McArthur","Dominic Bisignano","Aaron Hammersley"}; do echo ${i/\//} >> content-creators.txt; done
 mv content-creators.txt ..
 # Create ordered list of comments to loop over during typesetting
 mkdir "filenames"
@@ -17,6 +15,8 @@ cp ../notes/Inazuma-sensei.txt "./Daron Nefcy/Inazuma-sensei.txt"
 python3 link_fetcher.py
 mv links ..
 cd ..
+# Create list of directories to loop over during typesetting
+for i in {"Daron Nefcy","Adam McArthur","Dominic Bisignano","Aaron Hammersley"}; do echo ${i/\//} >> content-creators.txt; done
 # Convert input files into TeX-friendly format
 python3 parser.py
 # Create emoticon files for use during typesetting
