@@ -1,11 +1,8 @@
 #!/bin/bash
 rm -fr filenames links content-creators.txt
 cd src
-rm -fr filenames links content-creators.txt
+rm -fr filenames links
 python3 ama_compiler.py
-# Create list of directories to loop over during typesetting
-for i in {"Daron Nefcy","Adam McArthur","Dominic Bisignano","Aaron Hammersley"}; do echo ${i/\//} >> content-creators.txt; done
-mv content-creators.txt ..
 # Create ordered list of comments to loop over during typesetting
 mkdir "filenames"
 for i in ./*/; do ls --sort=time -r "$i" > "filenames/${i:2: -1}.txt"; done
@@ -23,6 +20,8 @@ python3 parser.py
 cd emoticons
 for i in ./*; do inkscape -D -z --file=${i:2:-4}.svg --export-pdf=${i:2:-4}.pdf --export-latex; done
 cd ..
+# Create list of directories to loop over during typesetting
+for i in {"Daron Nefcy","Adam McArthur","Dominic Bisignano","Aaron Hammersley"}; do echo ${i/\//} >> content-creators.txt; done
 # Commence typesetting
 pdflatex --shell-escape ama-transcript
 pdflatex ama-transcript
