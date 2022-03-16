@@ -1,7 +1,7 @@
 #!/bin/bash
 cd src
-#../_private.sh
-if [ -e qa-contents.zip ]; then (unzip -d . qa-contents.zip; rm qa-contents.zip); fi
+../_private.sh
+if [ -e qa-content.tar ]; then (tar xf qa-content.tar; rm qa-content.tar); fi
 python3 ama_compiler.py
 # Create ordered list of comments to loop over during typesetting
 if [ ! -e "../filenames" ]; then (mkdir "filenames"; for i in ./[AD]*/; do (ls --sort=time -r "$i" > "filenames/${i:2: -1}.txt"); done; mv "filenames" ..); fi
