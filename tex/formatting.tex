@@ -9,7 +9,8 @@
     \closein\readUrl
 }
 
-\def\printTitle#1.txt#2{\urlReader{#1}{#2} \subsection*{\href{\urlName}{#1} asks...}}
+\def\getTitle#1.txt{#1}
+{\catcode`_=13 \gdef\printTitle#1.txt#2{\urlReader{#1}{#2} {\catcode`_=13 \def_{\_} \global\read\fanNameRead to \fanName} \unless\ifx\fanName\empty \subsection*{\href{\urlName}{\expandafter\getTitle\fanName} asks...}\fi }}
 \def\restoreNL{\catcode`\^^M=5 \obeylines}
 \def\readQuestion#1#2{\bgroup\it\restoreNL \input "qa/#1/q-#2" \medskip\egroup}
 \def\readAnswer#1#2{\bgroup\restoreNL\par\input "qa/#1/a-#2" \egroup}

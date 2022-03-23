@@ -1,5 +1,6 @@
 \newread\ccRead
 \newread\fnameRead
+\newread\fanNameRead
 
 \newtoks\ccName
 \obeylines
@@ -13,6 +14,7 @@
     \ccName={"filenames/\vip.txt"}
     {%
     \openin\fnameRead=\the\ccName
+    \openin\fanNameRead=\the\ccName
     \loop
     \read\fnameRead to \fname
     \unless\ifeof\fnameRead
@@ -21,6 +23,7 @@
         \readAnswer\vip\fname
         \repeat
     \closein\fnameRead%
+    \closein\fanNameRead%
     }
 \repeat
 \closein\ccRead
