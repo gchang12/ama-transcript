@@ -1,8 +1,0 @@
-Adam McArthur: MaaarkGG
-Dominic Bisignano: Gabriel38
-Aaron Hammersley: Moncole, CattTheOne
-
-*Any threads with more than two comments will be recorded in overfull-qa.txt
--if it does not exist, then no such threads exist
-
-DaronNefcy: `Inazuma-sensei' had unexpected HTML; removed
